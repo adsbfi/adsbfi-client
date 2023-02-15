@@ -13,9 +13,24 @@ curl -L -o /tmp/adsbfi.sh https://adsb.fi/feed.sh
 sudo bash /tmp/adsbfi.sh
 ```
 
-## 3: Check these thid URL to check if your feed is working
+## 3: Check these this URL to check if your feed is working
 
 - <https://adsb.fi/>
+
+
+## Use netstat to check that your feed is working
+
+The feed IP for adsb.fi is 65.109.2.208
+
+```
+netstat -t -n | grep -E '30004|31090'
+```
+Expected Output:
+```
+tcp        0    182 localhost:43530     65.109.2.208:31090      ESTABLISHED
+tcp        0    410 localhost:47332     65.109.2.208:30004      ESTABLISHED
+```
+
 
 ### Optional: local interface for your data http://192.168.X.XX/adsbfi
 
