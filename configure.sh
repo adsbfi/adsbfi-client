@@ -1,11 +1,11 @@
 #!/bin/bash
 
 #####################################################################################
-#                        ADS-B EXCHANGE SETUP SCRIPT                                #
+#                       adsb.fi SETUP SCRIPT                                #
 #####################################################################################
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                                   #
-# Copyright (c) 2020 ADSBx                                                          #
+# Copyright (c) 2022 adsb.fi                                                          #
 #                                                                                   #
 # Permission is hereby granted, free of charge, to any person obtaining a copy      #
 # of this software and associated documentation files (the "Software"), to deal     #
@@ -31,7 +31,7 @@ set -e
 trap 'echo "[ERROR] Error in line $LINENO when executing: $BASH_COMMAND"' ERR
 renice 10 $$ &>/dev/null
 
-IPATH=/usr/local/share/adsbexchange
+IPATH=/usr/local/share/adsbfi
 
 function abort() {
     echo ------------
@@ -45,9 +45,9 @@ function abort() {
 
 BACKTITLETEXT="ADS-B Exchange Setup Script"
 
-whiptail --backtitle "$BACKTITLETEXT" --title "$BACKTITLETEXT" --yesno "Thanks for choosing to share your data with ADS-B Exchange!\n\nADSBexchange.com is a co-op of ADS-B/Mode S/MLAT feeders from around the world. This script will configure your current your ADS-B receiver to share your feeders data with ADS-B Exchange.\n\nWould you like to continue setup?" 13 78 || abort
+whiptail --backtitle "$BACKTITLETEXT" --title "$BACKTITLETEXT" --yesno "Thanks for choosing to share your data with adsb.fi!\n\nadsb.fi is a co-op of ADS-B/Mode S/MLAT feeders from around the world. This script will configure your current your ADS-B receiver to share your feeders data with adsb.fi.\n\nWould you like to continue setup?" 13 78 || abort
 
-ADSBEXCHANGEUSERNAME=$(whiptail --backtitle "$BACKTITLETEXT" --title "Feeder MLAT Name" --nocancel --inputbox "\nPlease enter a unique name to be shown on the MLAT map (map.adsbexchange.com/mlat-map)(the pin will be offset for privacy)\n\nExample: \"william34-london\", \"william34-jersey\", etc.\nDisable MLAT: enter a zero: 0" 12 78 3>&1 1>&2 2>&3) || abort
+ADSBEXCHANGEUSERNAME=$(whiptail --backtitle "$BACKTITLETEXT" --title "Feeder MLAT Name" --nocancel --inputbox "\nPlease enter a unique name to be shown on the MLAT client (the pin will be offset for privacy)\n\nExample: \"william34-london\", \"william34-jersey\", etc.\nDisable MLAT: enter a zero: 0" 12 78 3>&1 1>&2 2>&3) || abort
 
 NOSPACENAME="$(echo -n -e "${ADSBEXCHANGEUSERNAME}" | tr -c '[a-zA-Z0-9]_\- ' '_')"
 
@@ -115,8 +115,7 @@ tee /etc/default/adsbexchange >/dev/null <<EOF
 INPUT="$INPUT"
 REDUCE_INTERVAL="0.5"
 
-# feed name for checking MLAT sync (adsbx.org/sync)
-# also displayed on the MLAT map: map.adsbexchange.com/mlat-map
+# feed name for adsb.fi
 USER="$NOSPACENAME"
 
 LATITUDE="$RECEIVERLATITUDE"
@@ -137,8 +136,8 @@ RESULTS4="--results beast,connect,127.0.0.1:30154"
 PRIVACY=""
 INPUT_TYPE="$INPUT_TYPE"
 
-MLATSERVER="feed.adsbexchange.com:31090"
-TARGET="--net-connector feed1.adsbexchange.com,30004,beast_reduce_out,feed2.adsbexchange.com,64004"
+MLATSERVER="feed.adsb.fi:31090"
+TARGET="--net-connector feed.adsb.fi,30004,beast_reduce_out"
 NET_OPTIONS="--net-heartbeat 60 --net-ro-size 1280 --net-ro-interval 0.2 --net-ro-port 0 --net-sbs-port 0 --net-bi-port 30154 --net-bo-port 0 --net-ri-port 0 --write-json-every 1"
 JSON_OPTIONS="--max-range 450 --json-location-accuracy 2 --range-outline-hours 24"
 EOF
