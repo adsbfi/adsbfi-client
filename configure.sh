@@ -47,9 +47,9 @@ BACKTITLETEXT="ADS-B Exchange Setup Script"
 
 whiptail --backtitle "$BACKTITLETEXT" --title "$BACKTITLETEXT" --yesno "Thanks for choosing to share your data with adsb.fi!\n\nadsb.fi is a co-op of ADS-B/Mode S/MLAT feeders from around the world. This script will configure your current your ADS-B receiver to share your feeders data with adsb.fi.\n\nWould you like to continue setup?" 13 78 || abort
 
-ADSBEXCHANGEUSERNAME=$(whiptail --backtitle "$BACKTITLETEXT" --title "Feeder MLAT Name" --nocancel --inputbox "\nPlease enter a unique name to be shown on the MLAT client (the pin will be offset for privacy)\n\nExample: \"william34-london\", \"william34-jersey\", etc.\nDisable MLAT: enter a zero: 0" 12 78 3>&1 1>&2 2>&3) || abort
+ADSBFIUSERNAME=$(whiptail --backtitle "$BACKTITLETEXT" --title "Feeder MLAT Name" --nocancel --inputbox "\nPlease enter a unique name to be shown on the MLAT client (the pin will be offset for privacy)\n\nExample: \"william34-london\", \"william34-jersey\", etc.\nDisable MLAT: enter a zero: 0" 12 78 3>&1 1>&2 2>&3) || abort
 
-NOSPACENAME="$(echo -n -e "${ADSBEXCHANGEUSERNAME}" | tr -c '[a-zA-Z0-9]_\- ' '_')"
+NOSPACENAME="$(echo -n -e "${ADSBFIUSERNAME}" | tr -c '[a-zA-Z0-9]_\- ' '_')"
 
 if [[ "$NOSPACENAME" != 0 ]]; then
     whiptail --backtitle "$BACKTITLETEXT" --title "$BACKTITLETEXT" \
@@ -111,7 +111,7 @@ if [[ $(hostname) == "radarcape" ]] || pgrep rcd &>/dev/null; then
     INPUT_TYPE="radarcape_gps"
 fi
 
-tee /etc/default/adsbexchange >/dev/null <<EOF
+tee /etc/default/adsbfi >/dev/null <<EOF
 INPUT="$INPUT"
 REDUCE_INTERVAL="0.5"
 
