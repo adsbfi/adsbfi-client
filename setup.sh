@@ -1,11 +1,11 @@
 #!/bin/bash
 
 #####################################################################################
-#                        ADS-B EXCHANGE SETUP SCRIPT                                #
+#                        adsb.fi SETUP SCRIPT                                #
 #####################################################################################
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                                   #
-# Copyright (c) 2020 ADSBx                                                          #
+# Copyright (c) 2023 adsb.fi                                                    #
 #                                                                                   #
 # Permission is hereby granted, free of charge, to any person obtaining a copy      #
 # of this software and associated documentation files (the "Software"), to deal     #
@@ -29,7 +29,7 @@
 
 set -e
 
-IPATH=/usr/local/share/adsbexchange
+IPATH=/usr/local/share/adsbfi
 
 ## we need to install stuff that require root, check for that
 if [ "$(id -u)" != "0" ]; then
@@ -41,13 +41,13 @@ fi
 
 ## REFUSE INSTALLATION ON ADSBX IMAGE
 
-if [ -f /boot/adsb-config.txt ]; then
+if [ -f /boot/adsbfi-config.txt ]; then
     echo --------
-    echo "You are using the adsbx image, the feed setup script does not need to be installed."
-    echo "You should already be feeding, check here: https://adsbexchange.com/myip/"
+    echo "You are using the adsb.ffi image, the feed setup script does not need to be installed."
+    echo "You should already be feeding, check here: https://adsb.fi/"
     echo "If the feed isn't working, check/correct the configuration using nano:"
     echo --------
-    echo "sudo nano /boot/adsb-config.txt"
+    echo "sudo nano /boot/adsbfi-config.txt"
     echo --------
     echo "Hint for using nano: Ctrl-X to exit, Y(yes) and Enter to save."
     echo --------
@@ -57,7 +57,7 @@ fi
 
 bash "$IPATH/git/configure.sh"
 
-whiptail --backtitle "$BACKTITLETEXT" --title "$BACKTITLETEXT" --yesno "We are now ready to begin setting up your receiver to feed ADS-B Exchange.\n\nDo you wish to proceed?" 9 78 || exit 1
+whiptail --backtitle "$BACKTITLETEXT" --title "$BACKTITLETEXT" --yesno "We are now ready to begin setting up your receiver to feed adsb.fi.\n\nDo you wish to proceed?" 9 78 || exit 1
 
 bash "$IPATH/git/update.sh"
 
