@@ -57,7 +57,7 @@ If the client is up to date it should not take as long as the original installat
 otherwise this will also update the client which will take a moment.
 
 ```
-curl -L -o /tmp/axfeed.sh https://adsbfi.com/feed.sh
+curl -L -o /tmp/adsbfi.sh https://adsbfi.com/feed.sh
 sudo bash /tmp/adsbfi.sh
 ```
 
