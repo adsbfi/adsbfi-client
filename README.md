@@ -9,7 +9,7 @@
 
 ## 2: Install the adsbfi feed client
 ```
-curl -L -o /tmp/adsbfi.sh https://adsbfi.com/feed.sh
+curl -L -o /tmp/adsbfi.sh https://adsb.fi/feed.sh
 sudo bash /tmp/adsbfi.sh
 ```
 
@@ -31,7 +31,7 @@ sudo bash /usr/local/share/tar1090/uninstall.sh adsbx
 ### Update the feed client without reconfiguring
 
 ```
-curl -L -o /tmp/fiupdate.sh https://adsbfi.com/feed-update.sh
+curl -L -o /tmp/fiupdate.sh https://adsb.fi/feed-update.sh
 sudo bash /tmp/fiupdate.sh
 ```
 
@@ -57,7 +57,7 @@ If the client is up to date it should not take as long as the original installat
 otherwise this will also update the client which will take a moment.
 
 ```
-curl -L -o /tmp/adsbfi.sh https://adsbfi.com/feed.sh
+curl -L -o /tmp/adsbfi.sh https://adsb.fi/feed.sh
 sudo bash /tmp/adsbfi.sh
 ```
 
