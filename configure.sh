@@ -43,7 +43,7 @@ function abort() {
 
 ## WHIPTAIL DIALOGS
 
-BACKTITLETEXT="ADS-B Exchange Setup Script"
+BACKTITLETEXT="adsb.fi Setup Script"
 
 whiptail --backtitle "$BACKTITLETEXT" --title "$BACKTITLETEXT" --yesno "Thanks for choosing to share your data with adsb.fi!\n\nadsb.fi is a co-op of ADS-B/Mode S/MLAT feeders from around the world. This script will configure your current your ADS-B receiver to share your feeders data with adsb.fi.\n\nWould you like to continue setup?" 13 78 || abort
 
