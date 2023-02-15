@@ -25,7 +25,7 @@ sudo bash /usr/local/share/adsbfi/git/install-or-update-interface.sh
 ```
 Remove:
 ```
-sudo bash /usr/local/share/tar1090/uninstall.sh adsbx
+sudo bash /usr/local/share/tar1090/uninstall.sh adsbfi
 ```
 
 ### Update the feed client without reconfiguring
