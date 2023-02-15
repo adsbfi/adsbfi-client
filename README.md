@@ -16,7 +16,6 @@ sudo bash /tmp/adsbfi.sh
 ## 3: Check these thid URL to check if your feed is working
 
 - <https://adsb.fi/>
-- 
 
 ### Optional: local interface for your data http://192.168.X.XX/adsbfi
 
