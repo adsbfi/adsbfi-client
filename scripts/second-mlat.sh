@@ -14,7 +14,7 @@ Wants=network.target
 After=network.target
 
 [Service]
-User=adsbexchange
+User=adsbfi
 EnvironmentFile=/etc/default/adsbfi
 ExecStart=/usr/local/share/adsbfi/venv/bin/mlat-client \
     --input-type $INPUT_TYPE --no-udp \
