@@ -3,6 +3,10 @@
 set -e
 trap 'echo "------------"; echo "[ERROR] Error in line $LINENO when executing: $BASH_COMMAND"' ERR
 
+if ! command -v lighttpd &>/dev/null; then
+    apt-get update || true; apt-get install -y --no-install-recommends --no-install-suggests lighttpd || true
+fi
+
 function getGIT() {
     # getGIT $REPO $BRANCH $TARGET-DIR
     if [[ -z "$1" ]] || [[ -z "$2" ]] || [[ -z "$3" ]]; then
@@ -17,7 +21,7 @@ function getGIT() {
     return 0
 }
 
-REPO="https://github.com/wiedehopf/tar1090"
+REPO="https://github.com/adsbfi/tar1090"
 BRANCH="master"
 GIT="/usr/local/share/tar1090/git"
 
