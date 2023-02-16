@@ -15,10 +15,10 @@ rm -f /lib/systemd/system/adsbfi-mlat.service
 rm -f /lib/systemd/system/adsbfi-mlat2.service
 rm -f /lib/systemd/system/adsbfi-feed.service
 
-cp -f "$IPATH/adsbx-uuid" /tmp/adsbfi-uuid
+cp -f "$IPATH/adsbfi-uuid" /tmp/adsbfi-uuid
 rm -rf "$IPATH"
 mkdir -p "$IPATH"
-mv -f /tmp/adsbx-uuid "$IPATH/adsbfi-uuid"
+mv -f /tmp/adsbfi-uuid "$IPATH/adsbfi-uuid"
 
 set +x
 
