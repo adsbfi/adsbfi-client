@@ -183,7 +183,7 @@ then
     rm -rf "$VENV"
 fi
 
-MLAT_REPO="https://github.com/adsbfi/mlat-client.git"
+MLAT_REPO="git://github.com/adsbfi/mlat-client.git"
 MLAT_BRANCH="master"
 MLAT_VERSION="$(git ls-remote $MLAT_REPO $MLAT_BRANCH | cut -f1 || echo $RANDOM-$RANDOM )"
 if [[ $REINSTALL != yes ]] && grep -e "$MLAT_VERSION" -qs $IPATH/mlat_version \
@@ -262,7 +262,7 @@ echo 70
 
 # SETUP FEEDER TO SEND DUMP1090 DATA TO adsbfi
 
-READSB_REPO="https://github.com/adsbfi/readsb.git"
+READSB_REPO="git://github.com/adsbfi/readsb.git"
 READSB_BRANCH="master"
 if grep -E 'wheezy|jessie' /etc/os-release -qs; then
     READSB_BRANCH="jessie"
