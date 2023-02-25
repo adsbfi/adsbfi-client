@@ -122,7 +122,6 @@ if diff "$GIT/update.sh" "$IPATH/update.sh" &>/dev/null; then
 fi
 
 if [ -f /boot/adsb-config.txt ]; then
-    source /boot/adsbfi-config.txt
     source /boot/adsbfi-env
 else
     source /etc/default/adsbfi
