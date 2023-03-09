@@ -21,15 +21,15 @@ If the feeder is on your home network, the website will show its status.
 
 Alternatively use netstat to check that your feeder is connected.
 
-The feed IP for adsb.fi is 65.109.2.208
+The feed IP for adsb.fi is 103.196.37.90
 
 ```
 netstat -t -n | grep -E '30004|31090'
 ```
 Expected Output:
 ```
-tcp        0    182 localhost:43530     65.109.2.208:31090      ESTABLISHED
-tcp        0    410 localhost:47332     65.109.2.208:30004      ESTABLISHED
+tcp        0    182 localhost:43530     103.196.37.90:31090      ESTABLISHED
+tcp        0    410 localhost:47332     103.196.37.90:30004      ESTABLISHED
 ```
 
 ## 4: Optional: Install [local interface](https://github.com/adsbfi/tar1090) for your data
